@@ -24,5 +24,14 @@ class FirebaseServices{
 
   }
 
+  Future<List<UsersModel>?> deleteUser(documentId)async{
+    await GoogleHelper.fireBaseStore.collection('users')
+        .doc(documentId)
+        .delete()
+        .then((value) => print("User Deleted"))
+        .catchError((error) => print("Failed to delete user: $error"));
+  }
+
+
 
 }

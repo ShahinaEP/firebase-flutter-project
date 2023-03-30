@@ -25,14 +25,53 @@ class Users extends StatelessWidget {
               itemCount: state.usersModel.length,
               itemBuilder:(context, index){
                 var data = state.usersModel[index];
-                return
-
-                  Padding(
+                return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Card(
                       child: ListTile(
                         title:Text(data.fullName.toString()),
                         subtitle:Text(data.company.toString()) ,
+                        trailing: SizedBox(
+                          width: 200,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              // Icon(Icons.mode_edit_outline_outlined),
+                              // Icon(Icons.delete),
+                              InkWell(
+                                child:  Container(
+                                  decoration:const BoxDecoration(
+                                    color: Colors.teal,
+                                      borderRadius: BorderRadius.all(Radius.circular(2))
+                                  ),
+                                  child:const Padding(
+                                    padding:  EdgeInsets.fromLTRB(10, 5, 10, 5),
+                                    child: Text('Edit', style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 17
+                                    ),),
+                                  ),
+                                ),),
+                              const SizedBox(width: 10,),
+                              InkWell(
+                                child:  Container(
+                                  decoration:const BoxDecoration(
+                                      color: Colors.red,
+                                      borderRadius: BorderRadius.all(Radius.circular(2))
+                                  ),
+                                  child:const Padding(
+                                    padding:  EdgeInsets.fromLTRB(10, 5, 10, 5),
+                                    child: Text('Delete', style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 17
+                                    ),),
+                                  ),
+                                ),),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                   );

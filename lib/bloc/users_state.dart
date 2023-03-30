@@ -1,7 +1,13 @@
 part of 'users_bloc.dart';
 
 @immutable
-abstract class UsersState extends Equatable{}
+class UsersState extends Equatable{
+  List<UsersModel> usersModel =[];
+  UsersState({this.usersModel = const <UsersModel>[]});
+  @override
+  // TODO: implement props
+  List<Object?> get props => [usersModel];
+}
 
 class UsersInitial extends UsersState {
   @override
@@ -22,6 +28,24 @@ class UsersLoaded extends UsersState {
   @override
   // TODO: implement props
   List<Object?> get props => [usersModel];
+}
+
+// class AddUser extends UsersState{
+//   // final UsersModel usersModel;
+//   AddUser({required this.usersModel});
+//   @override
+//   // TODO: implement props
+//   List<Object?> get props => [usersModel];
+// }
+
+class NotDataError extends UsersState  {
+  final String notData;
+  NotDataError(this.notData);
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [notData];
+
 }
 
 class UsersError extends UsersState {

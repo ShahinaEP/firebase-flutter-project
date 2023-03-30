@@ -9,21 +9,25 @@ class UsersModel {
     this.fullName,
     this.company,
     this.age,
+    this.userId,
   });
 
   String? fullName;
   String? company;
   int? age;
+  String? userId;
 
   factory UsersModel.fromJson(Map<String, dynamic> json) => UsersModel(
     fullName: json["full_name"],
     company: json["company"],
     age: json["age"],
+    userId: json["userId"],
   );
 
   Map<String, dynamic> toJson() => {
     "full_name": fullName,
     "company": company,
     "age": age,
+    "userId": userId,
   };
 }

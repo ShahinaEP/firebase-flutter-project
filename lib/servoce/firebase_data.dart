@@ -19,13 +19,14 @@ class FirebaseServices {
   }
 
   addUsers(data) async {
-    await GoogleHelper.fireBaseStore.collection('users').add(data);
+    await GoogleHelper.fireBaseStore.collection('users').doc(data['userId']).set(data);
   }
   Future update(Map<String, dynamic> data, String docId)async{
     await GoogleHelper.fireBaseStore.collection("users").doc(docId).update(data);
 
   }
-  Future delete(String docId)async{
+  delete(String docId)async{
+    print(docId);
     await GoogleHelper.fireBaseStore.collection("users").doc(docId).delete();
 
   }

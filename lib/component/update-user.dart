@@ -1,3 +1,4 @@
+import 'package:firesore_flutter/models/user-model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -5,7 +6,8 @@ import '../bloc/users_bloc.dart';
 import '../servoce/firebase_data.dart';
 
 class UpdateUser extends StatelessWidget {
-  const UpdateUser({Key? key}) : super(key: key);
+  var data;
+   UpdateUser(this.data, { Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,9 @@ class UpdateUser extends StatelessWidget {
     final fullName = TextEditingController();
     final company = TextEditingController();
     final age = TextEditingController();
-    final String data ="";
+    fullName.text = data.fullName;
+    company.text = data.company;
+    age.text = data.age.toString();
       return  Column(
         mainAxisSize: MainAxisSize.min,
                 children: [
@@ -35,15 +39,21 @@ class UpdateUser extends StatelessWidget {
                     children: [
                       ElevatedButton(onPressed: (){
 
-                        FirebaseServices().update({
+                        var update ={
                           "full_name":fullName.text,
                           "company":company.text,
                           "age":age.text,
-                        },data).then((value){
-                          Navigator.pop(context);
-                          context.read<UsersBloc>().add(GetUsers());
+                        };
 
-                        });
+                        services.update(update, data.userId.toString());
+                        Navigator.pop(context);
+                        context.read<UsersBloc>().add(GetUsers());
+                        // FirebaseServices().update({
+                        //
+                        // },data).then((value){
+                        //
+                        //
+                        // });
                       }, child: const Text("Edit")),
                     ],
                   )

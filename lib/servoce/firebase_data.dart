@@ -10,7 +10,7 @@ class FirebaseServices {
             userId: element["userId"],
             fullName: element["full_name"],
             company: element["company"],
-            age: element["age"].hashCode //int value only
+            age: element["age"]
             );
         userList.add(usersModel);
       }
@@ -21,12 +21,19 @@ class FirebaseServices {
   addUsers(data) async {
     await GoogleHelper.fireBaseStore.collection('users').doc(data['userId']).set(data);
   }
-  Future update(Map<String, dynamic> data, String docId)async{
-    await GoogleHelper.fireBaseStore.collection("users").doc(docId).update(data);
+  update(data,  docId)async{
+    print(docId);
+    print(data);
+   await GoogleHelper.fireBaseStore.collection("users").doc(docId).update({
+      "full_name":data['full_name'],
+      "company":data['company'],
+      "age":data['age'],
+     "userId":docId
+    }).then((_) => print('Success'))
+       .catchError((error) => print('Failed: $error'));
 
   }
   delete(String docId)async{
-    print(docId);
     await GoogleHelper.fireBaseStore.collection("users").doc(docId).delete();
 
   }

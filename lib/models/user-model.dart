@@ -14,7 +14,7 @@ class UsersModel {
 
   String? fullName;
   String? company;
-  int? age;
+  String? age;
   String? userId;
 
   factory UsersModel.fromJson(Map<String, dynamic> json) => UsersModel(

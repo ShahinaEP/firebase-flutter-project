@@ -48,9 +48,9 @@ class Users extends StatelessWidget {
                               InkWell(
                                 onTap: (){
                                   showDialog(context: context, builder: (_){
-                                    return  AlertDialog(
-                                      title: Center(child: Text("Update User")),
-                                      content: UpdateUser(),
+                                    return   AlertDialog(
+                                      title: const Center(child: Text("Update User")),
+                                      content: UpdateUser(data)
                                     );
                                   });
                                 },

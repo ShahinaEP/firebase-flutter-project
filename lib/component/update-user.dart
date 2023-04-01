@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/users_bloc.dart';
-import '../servoce/firebase_data.dart';
+import '../service/firebase_data.dart';
 
 class UpdateUser extends StatelessWidget {
   var data;

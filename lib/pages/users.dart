@@ -1,11 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../component/create-collection.dart';
 import '../component/create-user.dart';
 import '../component/update-user.dart';
-import '../models/user-model.dart';
-import '../servoce/firebase_data.dart';
+import '../service/firebase_data.dart';
 import '../bloc/users_bloc.dart';
 
 
@@ -150,7 +149,7 @@ class Users extends StatelessWidget {
         }
       }),
 
-      floatingActionButton: CreateUser(),
+      floatingActionButton: const CreateUser(),
     );
   }
 

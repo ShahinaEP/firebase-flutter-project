@@ -1,9 +1,8 @@
-import 'package:firesore_flutter/models/user-model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/users_bloc.dart';
-import '../servoce/firebase_data.dart';
+import '../service/firebase_data.dart';
 
 class AddCollection extends StatelessWidget {
   var data;
@@ -20,6 +19,9 @@ class AddCollection extends StatelessWidget {
       children: [
         TextField(
           controller:fullName ,
+          decoration: const InputDecoration(
+              hintText: "Name"
+          ),
         ),
         const SizedBox(height: 15,),
         

@@ -1,6 +1,6 @@
 import '../models/user-model.dart';
 import 'google-services.dart';
-
+import 'package:intl/intl.dart';
 class FirebaseServices {
   Future<List<UsersModel>> getUserList() async {
     List<UsersModel> userList = [];
@@ -36,6 +36,11 @@ class FirebaseServices {
   delete(String docId)async{
     await GoogleHelper.fireBaseStore.collection("users").doc(docId).delete();
 
+  }
+
+
+  addSubCollection(collection,data)async{
+    await GoogleHelper.fireBaseStore.collection('users').doc(data).collection(data).doc(collection['collectionId']).set(collection);
   }
   Future<List<UsersModel>?> deleteUser(documentId) async {
     await GoogleHelper.fireBaseStore

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../component/create-collection.dart';
 import '../component/create-user.dart';
 import '../component/update-user.dart';
 import '../models/user-model.dart';
@@ -49,6 +50,31 @@ class Users extends StatelessWidget {
                                 onTap: (){
                                   showDialog(context: context, builder: (_){
                                     return   AlertDialog(
+                                        title: const Center(child: Text("Collection")),
+                                        content: AddCollection(data)
+                                    );
+                                  });
+                                },
+                                child:  Container(
+                                  decoration:const BoxDecoration(
+                                      color: Colors.grey,
+                                      borderRadius: BorderRadius.all(Radius.circular(2))
+                                  ),
+                                  child:const Padding(
+                                      padding:  EdgeInsets.fromLTRB(5, 5, 5, 5),
+                                      child: Icon(Icons.add)
+                                    // Text('Edit', style: TextStyle(
+                                    //   color: Colors.white,
+                                    //   fontWeight: FontWeight.w500,
+                                    //   fontSize: 17
+                                    // ),),
+                                  ),
+                                ),),
+                              const SizedBox(width: 10,),
+                              InkWell(
+                                onTap: (){
+                                  showDialog(context: context, builder: (_){
+                                    return   AlertDialog(
                                       title: const Center(child: Text("Update User")),
                                       content: UpdateUser(data)
                                     );
@@ -56,16 +82,17 @@ class Users extends StatelessWidget {
                                 },
                                 child:  Container(
                                   decoration:const BoxDecoration(
-                                    color: Colors.teal,
+                                    color: Colors.grey,
                                       borderRadius: BorderRadius.all(Radius.circular(2))
                                   ),
                                   child:const Padding(
-                                    padding:  EdgeInsets.fromLTRB(10, 5, 10, 5),
-                                    child: Text('Edit', style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 17
-                                    ),),
+                                    padding:  EdgeInsets.fromLTRB(5, 5, 5, 5),
+                                    child: Icon(Icons.edit)
+                                    // Text('Edit', style: TextStyle(
+                                    //   color: Colors.white,
+                                    //   fontWeight: FontWeight.w500,
+                                    //   fontSize: 17
+                                    // ),),
                                   ),
                                 ),),
                               const SizedBox(width: 10,),
@@ -81,16 +108,17 @@ class Users extends StatelessWidget {
                                 },
                                 child:  Container(
                                   decoration:const BoxDecoration(
-                                      color: Colors.red,
+                                      color: Colors.grey,
                                       borderRadius: BorderRadius.all(Radius.circular(2))
                                   ),
                                   child:const Padding(
-                                    padding:  EdgeInsets.fromLTRB(10, 5, 10, 5),
-                                    child: Text('Delete', style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 17
-                                    ),),
+                                    padding:  EdgeInsets.fromLTRB(5, 5, 5, 5),
+                                    child:Icon(Icons.delete)
+                                    // Text('Delete', style: TextStyle(
+                                    //     color: Colors.white,
+                                    //     fontWeight: FontWeight.w500,
+                                    //     fontSize: 17
+                                    // ),),
                                   ),
                                 ),),
                             ],

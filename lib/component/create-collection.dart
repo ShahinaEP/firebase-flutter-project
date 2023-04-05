@@ -13,7 +13,7 @@ class AddCollection extends StatelessWidget {
     FirebaseServices services = FirebaseServices();
     final fullName = TextEditingController();
     final amount = TextEditingController();
-    fullName.text = data.fullName;
+    // fullName.text = data.fullName;
     return  Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -30,7 +30,7 @@ class AddCollection extends StatelessWidget {
         TextField(
           controller:amount ,
           decoration: const InputDecoration(
-             hintText: "Amount"
+             hintText: "Link"
           ),
         ),
         const SizedBox(height: 15,),
@@ -42,7 +42,7 @@ class AddCollection extends StatelessWidget {
               var collection ={
                 "collectionId":"collection-${DateTime.now().microsecondsSinceEpoch}",
                 "name":fullName.text,
-                "amount":amount.text.toString(),
+                "link":amount.text.toString(),
                 "createTime":DateTime.now()
               };
 

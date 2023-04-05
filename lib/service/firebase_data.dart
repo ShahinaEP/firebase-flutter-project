@@ -1,6 +1,6 @@
+import '../models/collection-model.dart';
 import '../models/user-model.dart';
 import 'google-services.dart';
-import 'package:intl/intl.dart';
 class FirebaseServices {
   Future<List<UsersModel>> getUserList() async {
     List<UsersModel> userList = [];
@@ -17,13 +17,27 @@ class FirebaseServices {
     });
     return userList;
   }
-
+  Future<List<BooksModel>> getBookList(docId) async {
+    List<BooksModel> bookList = [];
+    await GoogleHelper.fireBaseStore.collection("users").doc(docId.toString()).collection(docId.toString()).get().then((value) {
+     for (var element in value.docs)
+          {
+            BooksModel booksModel = BooksModel(
+              collectionId: element["collectionId"],
+              name: element["name"],
+              link: element["link"],
+              createTime: element["createTime"]
+            );
+            bookList.add(booksModel);
+          }
+      });
+    return bookList;
+  }
   addUsers(data) async {
     await GoogleHelper.fireBaseStore.collection('users').doc(data['userId']).set(data);
   }
   update(data,  docId)async{
-    print(docId);
-    print(data);
+
    await GoogleHelper.fireBaseStore.collection("users").doc(docId).update({
       "full_name":data['full_name'],
       "company":data['company'],

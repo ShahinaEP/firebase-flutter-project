@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 import '../models/user-model.dart';
-import '../servoce/firebase_data.dart';
+import '../service/firebase_data.dart';
 
 part 'users_event.dart';
 part 'users_state.dart';

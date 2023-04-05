@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "153748221938-uptmv9c9la5vj253qptolfq1in1sihd2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.firesore",
+            "certificate_hash": "54ae8626ed6aa1dac3117e4e6efb5dd4d6fd873f"
+          }
+        },
+        {
           "client_id": "153748221938-pj0tujah6s659up203m7luibk5o1o5e5.apps.googleusercontent.com",
           "client_type": 3
         }

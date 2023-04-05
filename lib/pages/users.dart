@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../component/create-collection.dart';
 import '../component/create-user.dart';
+import 'show-data.dart';
 import '../component/update-user.dart';
 import '../service/firebase_data.dart';
 import '../bloc/users_bloc.dart';
@@ -36,8 +37,11 @@ class Users extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Card(
                       child: ListTile(
+                        onTap: (){
+                          services.getBookList(data.userId.toString());
+                        },
                         title:Text(data.fullName.toString()),
-                        subtitle:Text(data.company.toString()) ,
+                        subtitle:Text(data.company.toString()),
                         trailing: SizedBox(
                           width: 200,
                           child: Row(
@@ -47,21 +51,41 @@ class Users extends StatelessWidget {
                               // Icon(Icons.delete),
                               InkWell(
                                 onTap: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (_)=>ShowBook(data.userId.toString(), data.fullName.toString())));
+                                },
+                                child:  Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey.shade300,
+                                      borderRadius:const BorderRadius.all(Radius.circular(2))
+                                  ),
+                                  child:const Padding(
+                                      padding:  EdgeInsets.fromLTRB(5, 5, 5, 5),
+                                      child: Icon(Icons.visibility, color: Colors.teal,)
+                                    // Text('Edit', style: TextStyle(
+                                    //   color: Colors.white,
+                                    //   fontWeight: FontWeight.w500,
+                                    //   fontSize: 17
+                                    // ),),
+                                  ),
+                                ),),
+                              const SizedBox(width: 10,),
+                              InkWell(
+                                onTap: (){
                                   showDialog(context: context, builder: (_){
                                     return   AlertDialog(
-                                        title: const Center(child: Text("Collection")),
+                                        title: const Center(child: Text("Book Collection")),
                                         content: AddCollection(data)
                                     );
                                   });
                                 },
                                 child:  Container(
-                                  decoration:const BoxDecoration(
-                                      color: Colors.grey,
-                                      borderRadius: BorderRadius.all(Radius.circular(2))
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey.shade300,
+                                      borderRadius:const BorderRadius.all(Radius.circular(2))
                                   ),
                                   child:const Padding(
                                       padding:  EdgeInsets.fromLTRB(5, 5, 5, 5),
-                                      child: Icon(Icons.add)
+                                      child: Icon(Icons.add,color: Colors.teal,)
                                     // Text('Edit', style: TextStyle(
                                     //   color: Colors.white,
                                     //   fontWeight: FontWeight.w500,
@@ -80,13 +104,13 @@ class Users extends StatelessWidget {
                                   });
                                 },
                                 child:  Container(
-                                  decoration:const BoxDecoration(
-                                    color: Colors.grey,
-                                      borderRadius: BorderRadius.all(Radius.circular(2))
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade300,
+                                      borderRadius: const BorderRadius.all(Radius.circular(2))
                                   ),
                                   child:const Padding(
                                     padding:  EdgeInsets.fromLTRB(5, 5, 5, 5),
-                                    child: Icon(Icons.edit)
+                                    child: Icon(Icons.edit, color: Colors.teal,)
                                     // Text('Edit', style: TextStyle(
                                     //   color: Colors.white,
                                     //   fontWeight: FontWeight.w500,
@@ -106,13 +130,13 @@ class Users extends StatelessWidget {
                                   context.read<UsersBloc>().add(GetUsers());
                                 },
                                 child:  Container(
-                                  decoration:const BoxDecoration(
-                                      color: Colors.grey,
-                                      borderRadius: BorderRadius.all(Radius.circular(2))
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey.shade300,
+                                      borderRadius:const BorderRadius.all(Radius.circular(2))
                                   ),
                                   child:const Padding(
                                     padding:  EdgeInsets.fromLTRB(5, 5, 5, 5),
-                                    child:Icon(Icons.delete)
+                                    child:Icon(Icons.delete, color: Colors.teal,)
                                     // Text('Delete', style: TextStyle(
                                     //     color: Colors.white,
                                     //     fontWeight: FontWeight.w500,
